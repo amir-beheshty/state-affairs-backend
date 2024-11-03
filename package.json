@@ -1,0 +1,37 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nodemon",
+    "build": "tsc",
+    "clean": "npx rimraf ./node_modules",
+    "check-types": "tsc --pretty --noEmit",
+    "check-format": "prettier --check .",
+    "check-all": "yarn check-types && yarn check-format",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "@types/cors": "^2.8.17",
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.5",
+    "@types/express": "^5.0.0",
+    "@types/http-errors": "^2.0.4",
+    "@types/morgan": "^1.9.7",
+    "@types/node": "^22.8.1",
+    "@types/nodemon": "^1.19.4",
+    "husky": "^8.0.3",
+    "nodemon": "^3.1.7",
+    "rimraf": "^5.0.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  }
+}
