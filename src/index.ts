@@ -29,12 +29,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/v1', indexRouter);
 
-// catch 404 and forward to error handler
-app.use((req: Request, res: Response, next: NextFunction) => {
+// handle non matching routes
+app.use((_req: Request, _res: Response, next: NextFunction) => {
   next(createError(404));
 });
 
-// error handler
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
   // set locals, only providing error in development
   res.locals.message = err.message;

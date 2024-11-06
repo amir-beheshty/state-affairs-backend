@@ -3,12 +3,10 @@ import newsRoutes from './news';
 
 const router: Router = Router();
 
-/* GET home page. */
-router.get('/', (req: Request, res: Response): void => {
+router.get('/', (_req: Request, res: Response): void => {
   res.render('index', { title: 'Express' });
 });
 
-// news routes
 router.use('/news', newsRoutes);
 
 export default router;

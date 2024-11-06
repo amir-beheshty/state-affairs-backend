@@ -5,11 +5,7 @@
   "scripts": {
     "dev": "nodemon",
     "build": "tsc",
-    "clean": "npx rimraf ./node_modules",
-    "check-types": "tsc --pretty --noEmit",
-    "check-format": "prettier --check .",
-    "check-all": "yarn check-types && yarn check-format",
-    "prepare": "husky install"
+    "clean": "npx rimraf ./node_modules"
   },
   "dependencies": {
     "@types/cors": "^2.8.17",
@@ -28,7 +24,6 @@
     "@types/morgan": "^1.9.7",
     "@types/node": "^22.8.1",
     "@types/nodemon": "^1.19.4",
-    "husky": "^8.0.3",
     "nodemon": "^3.1.7",
     "rimraf": "^5.0.5",
     "ts-node": "^10.9.2",
