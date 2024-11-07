@@ -26,20 +26,20 @@ articles, and ensure fresh data?
 - News aggregation: A background task in a separate server that consumes data from multiple resources and synchs them with our database. 
 - Deduplication:
   - There are two possibilities:
-    1. The content is similar but not exactly "duplicate" - meaning that the same news from different sources is reported slightly differently. In this case, deduplication is complicated. 
+    1. The content is similar but not exactly "duplicate" - meaning that the same news from different sources is reported slightly different. In this case, deduplication is complicated. 
        1. For one, news sources can be bias although the news may be about the same event, the way it's reported and the details of the report could vary. We may want to include both of these sources and their summaries or we may want to score (rank) the accuracy. This is beyond the scope of this project and I am happy to discuss it more in person.
     2. The content is very similar and should be deduped.
        1. One simple solution is Hashing. Generate a hash of the article's title and content. The hash can be used as a unique identifier for the news article.
        2. Use trained LLM to obtain a similarity score. 
        3. Additionally, we can use entity matching such as people names, date, topic, and region. The entity matching can further help us prevent potential duplicate entries.
 - Fresh Data synch:
-  - There are few approaches here. For brevity I'm just going to write the one's that come to mind:
+  - There are few approaches here. For brevity I'm just going to point out these two:
     1. Background task like a CRON job.
     2. Data stream to keep up to date with current events. Similar to the stock market apps.
 - Storage:
   1. a nosql db like MongoDB is a good start, especially for a startup. 
   2. Elasticsearch should also be used for optimized searching. 
-  3. Redis for in memory caching for quick access.
+  3. Redis for in memory caching for quick reads.
 
 > Scalability: Discuss how the system could handle thousands of news articles
 across multiple states and topics. Would you index the articles? What storage
@@ -54,3 +54,13 @@ strategies would you use?
 potentially large datasets efficient.
 
 - I touched on this above. Use Elasticsearch and caching to make searching efficient. May need to optimize with Geospatial indexes.
+
+**Pagination:** 
+1. Inifinite scroll paginated experience, or
+   1. Benefits: more engaging and better user experience 
+   2. Drawback: implementation is complex on the client side and server side
+      1. For example, we need to be concered with memory exhaustion on the client side
+2. Page views like Google search results
+   1. Benefits: simpler to implement and can be better for SEO and performance
+
+When it comes to pagination, espeically as new fresh data is added priodically, we may need to use cursor pagination. 
